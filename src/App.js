@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <GraphicControl />
+      <p>Effy made a billion $$ yesterday</p>
     </>
   );
 }
