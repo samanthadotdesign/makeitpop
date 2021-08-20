@@ -1,5 +1,6 @@
 import React from 'react';
 import GraphicControl from './components/GraphicControl';
+import Display from './components/Display';
 import { DjProvider } from './store';
 
 console.log('outside render');
@@ -8,7 +9,7 @@ function App() {
   return (
     <DjProvider>
       <GraphicControl />
-      {/* <Display /> */}
+      <Display />
     </DjProvider>
   );
 }
