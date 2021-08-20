@@ -3,24 +3,29 @@ import React, { useReducer } from 'react';
 export const DjContext = React.createContext(null);
 const { Provider } = DjContext;
 
-const initialState = {};
-const ACTIONS = {
-  GET_DISPLAY: 'get-display',
+// Text Controls
+const textState = {
+  input: '',
+  size: 0,
+  weight: 0,
 };
 
-const djReducer = (state, action) => {
+const textReducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.GET_DISPLAY:
-      return console.log('success');
+    case 'set-text-input':
+      state.input = action.payload.input;
+      return { ...state };
     default:
       return state;
   }
 };
 
+// Final Provider
 export const DjProvider = ({ children }) => {
-  const [store, dispatch] = useReducer(djReducer, initialState);
+  const [textStoreState, textDispatch] = useReducer(textReducer, textState);
+
   return (
-    <Provider value={{ store, dispatch }}>
+    <Provider value={{ textStoreState, textDispatch }}>
       {children}
     </Provider>
   );
