@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container, NavLink } from './styles';
 
 export default function Nav() {

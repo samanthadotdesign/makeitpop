@@ -28,16 +28,3 @@ export default function AudioControl() {
     </>
   );
 }
-
-/**
- * <AudioControl>
- *    <BPM> – control speed
- *    <Play Btn>
- *    <DrumGrid>
- *        <Track> // map out buttons for each row
-    *        <OpenHat Track>
-    *            <StepButton><StepButton><StepButton><StepButton>
-    *        <ClosedHat Track>
-    *        <Clap Track>
-    *        <Kick Track>
-    */
