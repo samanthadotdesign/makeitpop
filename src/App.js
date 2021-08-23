@@ -2,6 +2,7 @@ import React from 'react';
 import GraphicControl from './components/GraphicControl';
 import Display from './components/Display';
 import { DjProvider } from './store';
+import AudioControl from './components/AudioControl';
 
 console.log('outside render');
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <DjProvider>
       <GraphicControl />
       <Display />
+      <AudioControl />
     </DjProvider>
   );
 }
