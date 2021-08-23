@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { DjContext, audioConfig } from '../../store';
-import BpmControl from '../BpmControl';
 import { Container, Track } from './styles';
+import BpmControl from '../BpmControl';
 import StepButton from '../StepButton';
+import Play from '../Play';
 
 export default function AudioControl() {
-  const { audioStoreState, audioDispatch } = useContext(DjContext);
-  console.log(audioStoreState);
+  const { audioStoreState } = useContext(DjContext);
 
   return (
     <>
       <BpmControl />
+      <Play />
       <Container>
         { audioConfig.map((audio) => (
           <Track>
@@ -18,7 +19,6 @@ export default function AudioControl() {
             { audioStoreState[audio.key].map((button, index) => (
               <StepButton
                 trackName={audio.key}
-                sound={audio.sound}
                 index={index}
               />
             ))}

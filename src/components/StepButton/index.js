@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { DjContext } from '../../store';
 import { Button } from './styles';
 
-export default function StepButton({ trackName, sound, index }) {
+export default function StepButton({ trackName, index }) {
   const { audioDispatch } = useContext(DjContext);
   const [soundOn, setSound] = useState(false);
 
