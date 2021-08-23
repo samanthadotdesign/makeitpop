@@ -10,6 +10,22 @@ export default function AudioControl() {
         <Row>
           <SingleTrack />
           <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+        </Row>
+        <Row>
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
+          <SingleTrack />
         </Row>
       </Container>
     </>
