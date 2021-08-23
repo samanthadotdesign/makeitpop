@@ -2,16 +2,17 @@ import React, { useContext, useState } from 'react';
 import Sketch from 'react-p5';
 import '../../utils/p5.sound.min';
 import { DjContext, audioConfig } from '../../store';
-import bass from '../../audio/bass.wav';
-import closedHiHat from '../../audio/closed-hihat.wav';
-import snare from '../../audio/snare.wav';
-import clap from '../../audio/clap.wav';
 
-let kickSound;
-let closedHiHatSound;
-let snareSound;
-let clapSound;
-let kickPart;
+const sounds = [
+  '../../audio/snare.wav',
+  '../../audio/closed-hihat.wav',
+  '../../audio/clap.wav',
+  '../../audio/bass.wav',
+];
+
+const loadedSounds = [];
+const soundPhrases = [];
+let soundPart;
 
 export default function Play() {
   const [playButton, setPlayButton] = useState(false);
@@ -21,32 +22,49 @@ export default function Play() {
 
   const { audioStoreState } = useContext(DjContext);
   // const kickSoundRef = useRef();
-  const {
-    OpenHat, ClosedHat, Clap, Kick,
-  } = audioStoreState;
+  // audioStoreState keys = [ Snare, HiHat, Clap, Kick]
+  const audioStoreKeys = Object.keys(audioStoreState);
 
   const preload = (p5) => {
-    kickSound = p5.loadSound(bass);
-    closedHiHatSound = p5.loadSound(closedHiHat);
-    snareSound = p5.loadSound(snare);
-    clapSound = p5.loadSound(clap);
-    // kickSoundRef.current = kickSound;
+    for (let i = 0; i < sounds.length; i += 1) {
+      const loadedSound = p5.loadSound(sounds[i]);
+      loadedSounds.push(loadedSound);
+    }
   };
-
   const setup = (p5) => {
     p5.noCanvas();
   };
 
   const handlePlayButton = () => {
     setPlayButton(true);
+    soundPart = new p5.Part();
+
     // new Phrase takes in the pattern of the array
-    const kickPhrase = new p5.Phrase('kickSound', (time) => kickSound.play(time), Kick);
-    // Part takes in the phrase and loops
-    kickPart = new p5.Part();
-    kickPart.addPhrase(kickPhrase);
-    // Initialize sound to be played in a loop
-    kickSound.play();
-    kickPart.loop();
+    for (let i = 0; i < loadedSounds.length; i += 1) {
+      const soundPhrase = new p5.Phrase(
+        audioStoreKeys[i],
+        () => loadedSounds[i].play(),
+        audioStoreState[audioStoreKeys[i]],
+      );
+      soundPhrases.push(soundPhrase);
+      loadedSounds[i].play();
+      console.log(soundPhrase);
+    }
+
+    for (let i = 0; i < soundPhrases.length; i += 1) {
+      soundPart.addPhrase(soundPhrases[i]);
+    }
+
+    console.log(soundPart);
+    soundPart.loop();
+
+    // const kickPhrase = new p5.Phrase('kickSound', (time) => kickSound.play(time), Kick);
+    // // Part takes in the phrase and loops
+    // kickPart = new p5.Part();
+    // kickPart.addPhrase(kickPhrase);
+    // // Initialize sound to be played in a loop
+    // kickSound.play();
+    // kickPart.loop();
   };
 
   const handleStopButton = () => {

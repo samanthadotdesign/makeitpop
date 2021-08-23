@@ -24,31 +24,27 @@ const textReducer = (state, action) => {
 
 export const audioConfig = [
   {
-    name: 'Open Hat',
-    key: 'OpenHat',
-    sound: '',
+    name: 'Snare',
+    key: 'Snare',
   },
   {
-    name: 'Closed Hat',
-    key: 'ClosedHat',
-    sound: '',
+    name: 'Hi Hat',
+    key: 'HiHat',
   },
   {
     name: 'Clap',
     key: 'Clap',
-    sound: '',
   },
   {
     name: 'Kick',
     key: 'Kick',
-    sound: './audio/bass.wav',
   },
 
 ];
 
 const initialStepState = {
-  OpenHat: [0, 0, 0, 0, 0],
-  ClosedHat: [0, 0, 0, 0, 0],
+  Snare: [0, 0, 0, 0, 0],
+  HiHat: [0, 0, 0, 0, 0],
   Clap: [0, 0, 0, 0, 0],
   Kick: [0, 0, 0, 0, 0],
 };
