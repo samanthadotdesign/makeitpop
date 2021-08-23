@@ -1,4 +1,4 @@
-export default function SingleTrack() {
+export default function StepButton() {
   const handleClick = () => {
     console.log('played');
   };

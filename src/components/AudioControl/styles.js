@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Row = styled.div`
+export const Track = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 100px)
 `;
