@@ -1,16 +1,25 @@
 import React from 'react';
+import { DjProvider } from './store';
 import GraphicControl from './components/GraphicControl';
 import Display from './components/Display';
-import { DjProvider } from './store';
+import AudioControl from './components/AudioControl';
+import Record from './components/Record';
+import Nav from './components/Nav';
+import { Main } from './styles';
 
-console.log('outside render');
 function App() {
-  console.log('inside render');
   return (
-    <DjProvider>
-      <GraphicControl />
-      <Display />
-    </DjProvider>
+    <>
+      <DjProvider>
+        <Nav />
+        <Main>
+          <GraphicControl />
+          <Display />
+          <AudioControl />
+          <Record />
+        </Main>
+      </DjProvider>
+    </>
   );
 }
 
