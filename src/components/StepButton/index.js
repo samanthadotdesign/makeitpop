@@ -1,4 +1,4 @@
-export default function StepButton() {
+export default function StepButton({ sound }) {
   const handleClick = () => {
     console.log('played');
   };

@@ -1,32 +1,25 @@
+import React, { useContext } from 'react';
+import { DjContext, audioConfig } from '../../store';
 import BpmControl from '../BpmControl';
 import { Container, Track } from './styles';
 import StepButton from '../StepButton';
 
 export default function AudioControl() {
+  const { audioStoreState, audioDispatch } = useContext(DjContext);
+  console.log(audioStoreState);
+
   return (
     <>
       <BpmControl />
       <Container>
-        <Track>
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-        </Track>
-        <Track>
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-          <StepButton />
-        </Track>
+        { audioConfig.map((audio) => (
+          <Track>
+            <p>{audio.name}</p>
+            { audioStoreState[audio.key].map((button) => (
+              <StepButton sound={audio.sound} />
+            ))}
+          </Track>
+        )) }
       </Container>
     </>
   );
