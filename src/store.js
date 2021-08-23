@@ -56,12 +56,22 @@ const initialStepState = {
 const audioReducer = (state, action) => {
   switch (action.type) {
     case 'add step':
-      return state;
+      const addTrack = state[action.payload.trackName];
+      // Replace 0 with 1
+      addTrack.splice(action.payload.index, 1, 1);
+      return { ...state };
     case 'remove step':
-      return state;
+      const removeTrack = state[action.payload.trackName];
+      // Replace 1 with 0
+      removeTrack.splice(action.payload.index, 1, 0);
+      return { ...state };
     default:
       return state;
   }
+};
+
+export const removeStepAction = () => {
+
 };
 
 // Final Provider

@@ -1,13 +1,41 @@
-export default function StepButton({ sound }) {
+import React, { useContext, useState } from 'react';
+import { DjContext } from '../../store';
+import { Button } from './styles';
+
+export default function StepButton({ trackName, sound, index }) {
+  const { audioDispatch } = useContext(DjContext);
+  const [soundOn, setSound] = useState(false);
+
   const handleClick = () => {
-    console.log('played');
+    // If the sound is on, onMouseDown the user wants to remove sound
+    if (soundOn) {
+      audioDispatch({
+        type: 'remove step',
+        payload: {
+          trackName,
+          index,
+        },
+      });
+    } else {
+      audioDispatch({
+        type: 'add step',
+        payload: {
+          trackName,
+          index,
+        },
+      });
+    }
+    setSound(!soundOn);
   };
 
-  // onMouseDown
-  // onMouseUp
   return (
-    <div>
-      <button onClick={handleClick}>►</button>
-    </div>
+    <>
+      <Button
+        onMouseDown={handleClick}
+        soundOn={soundOn}
+      >
+        ►
+      </Button>
+    </>
   );
 }
