@@ -16,9 +16,6 @@ const sounds = [
   bass,
 ];
 
-const loadedSounds = [];
-const soundPhrases = [];
-
 export default function Play() {
   const [playButton, setPlayButton] = useState(false);
 
@@ -29,7 +26,7 @@ export default function Play() {
   const soundFileRef = useRef([]);
   //  STORES ALL THE PHRASES
   const soundPhrasesRef = useRef([]);
-
+  const buttonRef = useRef();
   const { audioStoreState } = useContext(DjContext);
   console.log('### AUDIOSTORESTATE ###', audioStoreState);
 
@@ -44,7 +41,6 @@ export default function Play() {
       console.log('LOADED SOUND -> ', loadedSound);
       soundFileRef.current.push(loadedSound);
       console.log(soundFileRef.current);
-      loadedSounds.push(loadedSound);
     }
   };
   const setup = (p5) => {
@@ -53,9 +49,7 @@ export default function Play() {
 
   const handlePlayButton = () => {
     console.log('HANDLEPLAYFUNCTION function');
-    // setPlayButton(true);
     console.log(soundFileRef.current);
-    // console.log(loadedSounds);
     soundPartRef.current = new p5.Part();
 
     // // new Phrase takes in the pattern of the array
