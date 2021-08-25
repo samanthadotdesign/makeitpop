@@ -29,7 +29,7 @@ export default function Play() {
   const soundPhrasesRef = useRef([]);
 
   const { audioStoreState } = useContext(DjContext);
-  const { phrases } = audioStoreState;
+  const { phrases, tempo } = audioStoreState;
 
   // keys = [ Snare, HiHat, Clap, Kick]
   const phrasesKeys = Object.keys(phrases);
@@ -68,7 +68,7 @@ export default function Play() {
       soundPartRef.current.addPhrase(soundPhrasesRef.current[i]);
     }
 
-    soundPartRef.current.loop();
+    soundPartRef.current.loop(tempo);
   };
 
   const handleStopButton = () => {
