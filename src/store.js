@@ -43,31 +43,33 @@ export const audioConfig = [
 ];
 
 const initialStepState = {
-  Snare: [0, 0, 0, 0, 0],
-  HiHat: [0, 0, 0, 0, 0],
-  Clap: [0, 0, 0, 0, 0],
-  Kick: [0, 0, 0, 0, 0],
+  phrases: {
+    Snare: [0, 0, 0, 0, 0],
+    HiHat: [0, 0, 0, 0, 0],
+    Clap: [0, 0, 0, 0, 0],
+    Kick: [0, 0, 0, 0, 0],
+  },
+  tempo: 120,
 };
 
 const audioReducer = (state, action) => {
   switch (action.type) {
     case 'add step':
-      const addTrack = state[action.payload.trackName];
+      const addTrack = state.phrases[action.payload.trackName];
       // Replace 0 with 1
       addTrack.splice(action.payload.index, 1, 1);
       return { ...state };
     case 'remove step':
-      const removeTrack = state[action.payload.trackName];
+      const removeTrack = state.phrases[action.payload.trackName];
       // Replace 1 with 0
       removeTrack.splice(action.payload.index, 1, 0);
+      return { ...state };
+    case 'change tempo':
+      state.tempo = action.payload;
       return { ...state };
     default:
       return state;
   }
-};
-
-export const removeStepAction = () => {
-
 };
 
 // Final Provider

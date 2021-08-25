@@ -7,6 +7,7 @@ import Play from '../Play';
 
 export default function AudioControl() {
   const { audioStoreState } = useContext(DjContext);
+  const { phrases } = audioStoreState;
 
   return (
     <>
@@ -16,7 +17,7 @@ export default function AudioControl() {
         { audioConfig.map((audio) => (
           <Track>
             <p>{audio.name}</p>
-            { audioStoreState[audio.key].map((button, index) => (
+            { phrases[audio.key].map((button, index) => (
               <StepButton
                 trackName={audio.key}
                 index={index}

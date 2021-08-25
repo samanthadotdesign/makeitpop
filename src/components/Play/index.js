@@ -16,9 +16,6 @@ const sounds = [
   bass,
 ];
 
-const loadedSounds = [];
-const soundPhrases = [];
-
 export default function Play() {
   const [playButton, setPlayButton] = useState(false);
 
@@ -27,24 +24,21 @@ export default function Play() {
 
   // stores all the loaded sound files
   const soundFileRef = useRef([]);
+
   //  STORES ALL THE PHRASES
   const soundPhrasesRef = useRef([]);
 
   const { audioStoreState } = useContext(DjContext);
-  console.log('### AUDIOSTORESTATE ###', audioStoreState);
+  const { phrases } = audioStoreState;
 
-  // audioStoreState keys = [ Snare, HiHat, Clap, Kick]
-  const audioStoreKeys = Object.keys(audioStoreState);
-  console.log('## AUDIOSTORE-KEYS ##', audioStoreKeys);
+  // keys = [ Snare, HiHat, Clap, Kick]
+  const phrasesKeys = Object.keys(phrases);
 
   const preload = (p5) => {
     // looping audio files and pre-loading them
     for (let i = 0; i < sounds.length; i += 1) {
-      const loadedSound = p5.loadSound(sounds[i], console.log('SOUND IS LOADED!'));
-      console.log('LOADED SOUND -> ', loadedSound);
+      const loadedSound = p5.loadSound(sounds[i]);
       soundFileRef.current.push(loadedSound);
-      console.log(soundFileRef.current);
-      loadedSounds.push(loadedSound);
     }
   };
   const setup = (p5) => {
@@ -52,23 +46,19 @@ export default function Play() {
   };
 
   const handlePlayButton = () => {
-    console.log('HANDLEPLAYFUNCTION function');
     // setPlayButton(true);
     console.log(soundFileRef.current);
-    // console.log(loadedSounds);
     soundPartRef.current = new p5.Part();
 
     // // new Phrase takes in the pattern of the array
     for (let i = 0; i < soundFileRef.current.length; i += 1) {
-      console.log('IN PHRASE LOOP -> ', audioStoreKeys[i]);
-      console.log('LOADED SOUND --> ', soundFileRef.current[i]);
       const soundPhrase = new p5.Phrase(
-        audioStoreKeys[i],
+        phrasesKeys[i],
         (a) => {
           soundFileRef.current[i].play(a);
           console.log(a);
         },
-        audioStoreState[audioStoreKeys[i]],
+        phrases[phrasesKeys[i]],
       );
       soundPhrasesRef.current.push(soundPhrase);
       console.log(soundPhrase);
