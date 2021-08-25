@@ -5,19 +5,16 @@ import { DjContext } from '../../store';
 export default function BpmControl() {
   const { audioStoreState, audioDispatch } = useContext(DjContext);
   const { tempo } = audioStoreState;
-  const [currentTempo, setCurrentTempo] = useState(tempo);
 
   const handleChange = (e, sliderVal) => {
-    setCurrentTempo(sliderVal);
-    console.log(currentTempo);
-    audioDispatch({ type: 'change tempo', payload: currentTempo });
+    audioDispatch({ type: 'change tempo', payload: sliderVal });
   };
 
   return (
     <div>
       <p>Tempo</p>
       <Slider
-        value={currentTempo}
+        value={tempo}
         onChange={handleChange}
         defaultValue={120}
         aria-labelledby="continuous-slider"

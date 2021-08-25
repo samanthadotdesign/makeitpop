@@ -97,6 +97,7 @@ export default function Play() {
   return (
     <div>
       <button type="button" onClick={handleButton}>{buttonText}</button>
+      <p>{tempo}</p>
       <Sketch preload={preload} setup={setup} />
     </div>
   );

@@ -66,7 +66,7 @@ const audioReducer = (state, action) => {
       return { ...state };
     case 'change tempo':
       state.tempo = action.payload;
-      return { ...state };
+      return state;
     default:
       return state;
   }
