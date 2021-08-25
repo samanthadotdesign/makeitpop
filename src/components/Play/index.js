@@ -49,14 +49,15 @@ export default function Play() {
     // setPlayButton(true);
     console.log(soundFileRef.current);
     soundPartRef.current = new p5.Part();
+    console.log(tempo);
 
-    // // new Phrase takes in the pattern of the array
+    // new Phrase takes in the pattern of the array
     for (let i = 0; i < soundFileRef.current.length; i += 1) {
       const soundPhrase = new p5.Phrase(
         phrasesKeys[i],
-        (a) => {
-          soundFileRef.current[i].play(a);
-          console.log(a);
+        // Time is a parameter passed by p5
+        (time) => {
+          soundFileRef.current[i].play(time);
         },
         phrases[phrasesKeys[i]],
       );
@@ -68,7 +69,14 @@ export default function Play() {
       soundPartRef.current.addPhrase(soundPhrasesRef.current[i]);
     }
 
-    soundPartRef.current.loop(tempo);
+    // for (let i = 0; i < soundFileRef.current.length; i += 1) {
+    //   console.log(soundFileRef.current)
+    //   console.log(tempo);
+    //   soundFileRef.current[i].play(tempo);
+    // }
+    // soundPartRef.current.play(tempo);
+    soundPartRef.current.setBPM(tempo);
+    soundPartRef.current.loop();
   };
 
   const handleStopButton = () => {
