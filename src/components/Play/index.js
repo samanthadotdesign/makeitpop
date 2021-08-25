@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-import React, { useContext, useState, useRef } from 'react';
+import React, {
+  useContext, useState, useRef, useEffect,
+} from 'react';
 import Sketch from 'react-p5';
 import '../../utils/p5.sound.min';
 import { DjContext, audioConfig } from '../../store';
@@ -17,22 +19,21 @@ const sounds = [
 ];
 
 export default function Play() {
-  const [playButton, setPlayButton] = useState(false);
-
-  // stores the p5.Part
-  const soundPartRef = useRef();
-
-  // stores all the loaded sound files
-  const soundFileRef = useRef([]);
-
-  //  STORES ALL THE PHRASES
-  const soundPhrasesRef = useRef([]);
-
   const { audioStoreState } = useContext(DjContext);
   const { phrases, tempo } = audioStoreState;
 
+  const [playButton, setPlayButton] = useState(true);
+  const [buttonText, setButtonText] = useState('Play');
+
   // keys = [ Snare, HiHat, Clap, Kick]
   const phrasesKeys = Object.keys(phrases);
+
+  // stores the p5.Part
+  const soundPartRef = useRef();
+  // stores all the loaded sound files
+  const soundFileRef = useRef([]);
+  //  STORES ALL THE PHRASES
+  const soundPhrasesRef = useRef([]);
 
   const preload = (p5) => {
     // looping audio files and pre-loading them
@@ -45,13 +46,11 @@ export default function Play() {
     p5.noCanvas();
   };
 
-  const handlePlayButton = () => {
-    // setPlayButton(true);
-    console.log(soundFileRef.current);
+  const playMusic = () => {
     soundPartRef.current = new p5.Part();
-    console.log(tempo);
 
     // new Phrase takes in the pattern of the array
+    // sequence is combination of steps array [0,0,1..], loadedSounds, and tempo
     for (let i = 0; i < soundFileRef.current.length; i += 1) {
       const soundPhrase = new p5.Phrase(
         phrasesKeys[i],
@@ -68,26 +67,30 @@ export default function Play() {
     for (let i = 0; i < soundPhrasesRef.current.length; i += 1) {
       soundPartRef.current.addPhrase(soundPhrasesRef.current[i]);
     }
-
-    // for (let i = 0; i < soundFileRef.current.length; i += 1) {
-    //   console.log(soundFileRef.current)
-    //   console.log(tempo);
-    //   soundFileRef.current[i].play(tempo);
-    // }
-    // soundPartRef.current.play(tempo);
     soundPartRef.current.setBPM(tempo);
     soundPartRef.current.loop();
   };
 
-  const handleStopButton = () => {
-    setPlayButton(false);
-    soundPartRef.current.stop();
+  const handleButton = () => {
+    // If playButton is currently true, user wants to stop
+    if (playButton) {
+      setButtonText('Play');
+      setPlayButton(false);
+
+      if (soundPartRef.current) {
+        soundPartRef.current.stop();
+      }
+    } else {
+      // if playButton is currently false, user wants to play
+      setButtonText('Stop');
+      setPlayButton(true);
+      playMusic();
+    }
   };
 
   return (
     <div>
-      <button type="button" onClick={handlePlayButton}>Play</button>
-      <button type="button" onClick={handleStopButton}>Stop</button>
+      <button type="button" onClick={handleButton}>{buttonText}</button>
       <Sketch preload={preload} setup={setup} />
     </div>
   );
