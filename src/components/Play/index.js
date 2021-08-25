@@ -34,39 +34,19 @@ export default function Play() {
   const soundFileRef = useRef([]);
   //  STORES ALL THE PHRASES
   const soundPhrasesRef = useRef([]);
-<<<<<<< HEAD
-  const buttonRef = useRef();
-  const { audioStoreState } = useContext(DjContext);
-  console.log('### AUDIOSTORESTATE ###', audioStoreState);
-
-  // audioStoreState keys = [ Snare, HiHat, Clap, Kick]
-  const audioStoreKeys = Object.keys(audioStoreState);
-  console.log('## AUDIOSTORE-KEYS ##', audioStoreKeys);
-=======
->>>>>>> main
 
   const preload = (p5) => {
     // looping audio files and pre-loading them
     for (let i = 0; i < sounds.length; i += 1) {
       const loadedSound = p5.loadSound(sounds[i]);
       soundFileRef.current.push(loadedSound);
-<<<<<<< HEAD
-      console.log(soundFileRef.current);
-=======
->>>>>>> main
     }
   };
   const setup = (p5) => {
     p5.noCanvas();
   };
 
-<<<<<<< HEAD
-  const handlePlayButton = () => {
-    console.log('HANDLEPLAYFUNCTION function');
-    console.log(soundFileRef.current);
-=======
   const playMusic = () => {
->>>>>>> main
     soundPartRef.current = new p5.Part();
 
     // new Phrase takes in the pattern of the array
