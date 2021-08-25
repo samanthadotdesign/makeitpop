@@ -67,9 +67,15 @@ export default function Play() {
     for (let i = 0; i < soundPhrasesRef.current.length; i += 1) {
       soundPartRef.current.addPhrase(soundPhrasesRef.current[i]);
     }
-    soundPartRef.current.setBPM(tempo);
+    soundPartRef.current.setBPM(120);
     soundPartRef.current.loop();
   };
+
+  useEffect(() => {
+    if (soundPartRef.current) {
+      soundPartRef.current.setBPM(tempo);
+    }
+  }, [tempo]);
 
   const handleButton = () => {
     // If playButton is currently true, user wants to stop
