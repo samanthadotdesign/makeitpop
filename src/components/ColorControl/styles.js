@@ -13,5 +13,5 @@ export const Inner = styled.div`
   width: 48px;
   height: 20px;
   border-radius: 2px;
-  background: ${(props) => (props.color)};
+  background: rgba(${(props) => (props.r)});
 `;

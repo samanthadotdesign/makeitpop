@@ -5,10 +5,10 @@ import { Swatch, Inner } from './styles';
 
 export default function ColorControl() {
   const { colorStoreState, colorDispatch } = useContext(DjContext);
-  // selection is an array of color strings
   const { selection, isSwatchOpen } = colorStoreState;
 
   const handleColorChange = (colorVal, index) => {
+    console.log(colorVal);
     colorDispatch({
       type: 'update color',
       payload: {
@@ -32,7 +32,12 @@ export default function ColorControl() {
       {selection.map((color, index) => (
         <>
           <Swatch onClick={(e) => handleSwatch(e, index)}>
-            <Inner color={color} />
+            <Inner
+              r={color.r}
+              g={color.g}
+              b={color.b}
+              a={color.a}
+            />
           </Swatch>
           { isSwatchOpen[index] && (
           <HexColorPicker
