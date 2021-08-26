@@ -21,7 +21,6 @@ const textReducer = (state, action) => {
 };
 
 // Audio Controls
-
 export const audioConfig = [
   {
     name: 'Snare',
@@ -72,10 +71,54 @@ const audioReducer = (state, action) => {
   }
 };
 
+// Color Controls
+const initialColorState = {
+  selection: [
+    {
+      r: 117, g: 214, b: 255, a: 1,
+    },
+    {
+      r: 174, g: 187, b: 255, a: 1,
+    },
+    {
+      r: 255, g: 171, b: 111, a: 1,
+    },
+    {
+      r: 234, g: 158, b: 233, a: 1,
+    },
+    {
+      r: 98, g: 232, b: 205, a: 1,
+    },
+  ],
+  isSwatchOpen: [
+    false, false, false, false, false,
+  ],
+};
+
+const colorReducer = (state, action) => {
+  switch (action.type) {
+    case 'open swatch':
+      const result = state.isSwatchOpen.map((color) => false);
+      result[action.payload] = true;
+      state.isSwatchOpen = result;
+      return { ...state };
+    case 'close swatch':
+      state.isSwatchOpen[action.payload] = false;
+      return { ...state };
+    case 'update color':
+      const { colorVal, index } = action.payload;
+      state.selection[index] = colorVal;
+      return { ...state };
+    default:
+      return state;
+  }
+};
+
 // Final Provider
 export const DjProvider = ({ children }) => {
   const [textStoreState, textDispatch] = useReducer(textReducer, initialTextState);
   const [audioStoreState, audioDispatch] = useReducer(audioReducer, initialStepState);
+  const [colorStoreState, colorDispatch] = useReducer(colorReducer, initialColorState);
 
   return (
     <Provider value={{
@@ -83,6 +126,8 @@ export const DjProvider = ({ children }) => {
       textDispatch,
       audioStoreState,
       audioDispatch,
+      colorStoreState,
+      colorDispatch,
     }}
     >
       {children}
