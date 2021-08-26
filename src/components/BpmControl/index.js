@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Slider } from '@material-ui/core';
 import { DjContext } from '../../store';
 
@@ -7,7 +7,10 @@ export default function BpmControl() {
   const { tempo } = audioStoreState;
 
   const handleChange = (e, sliderVal) => {
-    audioDispatch({ type: 'change tempo', payload: sliderVal });
+    audioDispatch({
+      type: 'change tempo',
+      payload: sliderVal,
+    });
   };
 
   return (

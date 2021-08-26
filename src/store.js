@@ -21,7 +21,6 @@ const textReducer = (state, action) => {
 };
 
 // Audio Controls
-
 export const audioConfig = [
   {
     name: 'Snare',
@@ -66,6 +65,30 @@ const audioReducer = (state, action) => {
       return { ...state };
     case 'change tempo':
       state.tempo = action.payload;
+      return { ...state };
+    default:
+      return state;
+  }
+};
+
+// Color Controls
+const initialColorState = {
+  selection: [
+    '#75D6FF',
+    '#AEBBFF',
+    '#FFAB6F',
+    '#EA9EE9',
+    '#62E8CD',
+  ],
+};
+
+const colorReducer = (state, action) => {
+  switch (action.type) {
+    case 'add color':
+      return state;
+    case 'remove color':
+      return state;
+    case 'update color':
       return state;
     default:
       return state;
@@ -76,6 +99,7 @@ const audioReducer = (state, action) => {
 export const DjProvider = ({ children }) => {
   const [textStoreState, textDispatch] = useReducer(textReducer, initialTextState);
   const [audioStoreState, audioDispatch] = useReducer(audioReducer, initialStepState);
+  const [colorStoreState, colorDispatch] = useReducer(colorReducer, initialColorState);
 
   return (
     <Provider value={{
@@ -83,6 +107,8 @@ export const DjProvider = ({ children }) => {
       textDispatch,
       audioStoreState,
       audioDispatch,
+      colorStoreState,
+      colorDispatch,
     }}
     >
       {children}
