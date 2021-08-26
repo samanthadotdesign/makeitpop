@@ -69,7 +69,7 @@ const particleSetup = (p) => {
     p.imageMode(p.CENTER);
     // CREATE NEW FFT OBJECT
     fft = new p5.FFT();
-    img.filter(p.BLUR, 60);
+    // img.p.filter(p.BLUR, 60);
     // Create instance of the particle
     singleParticle = new Particle();
     console.log('******* INSIDE PARTICLE SETUP *********');
