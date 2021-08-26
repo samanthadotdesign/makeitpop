@@ -80,16 +80,25 @@ const initialColorState = {
     '#EA9EE9',
     '#62E8CD',
   ],
+  isSwatchOpen: [
+    false, false, false, false, false,
+  ],
 };
 
 const colorReducer = (state, action) => {
   switch (action.type) {
-    case 'add color':
-      return state;
-    case 'remove color':
-      return state;
+    case 'open swatch':
+      const result = state.isSwatchOpen.map((color) => false);
+      result[action.payload] = true;
+      state.isSwatchOpen = result;
+      return { ...state };
+    case 'close swatch':
+      state.isSwatchOpen[action.payload] = false;
+      return { ...state };
     case 'update color':
-      return state;
+      const { colorVal, index } = action.payload;
+      state.selection[index] = colorVal;
+      return { ...state };
     default:
       return state;
   }

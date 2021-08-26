@@ -3,42 +3,46 @@ import { HexColorPicker } from 'react-colorful';
 import { DjContext } from '../../store';
 import { Swatch, Inner } from './styles';
 
-const background = '#000';
-
 export default function ColorControl() {
   const { colorStoreState, colorDispatch } = useContext(DjContext);
   // selection is an array of color strings
-  const { selection } = colorStoreState;
-  const [swatchOpen, setSwatchOpen] = useState(false);
+  const { selection, isSwatchOpen } = colorStoreState;
 
-  // use setState for array for isSwatchOpen state, map each one to true / false
-  // swatchOpenIndex -> index of the swatch that is open
-
-  const handleColorChange = (colorVal) => {
-    console.log('***** INSIDE HANDLE COLOR *****');
-    console.log(colorVal);
+  const handleColorChange = (colorVal, index) => {
+    colorDispatch({
+      type: 'update color',
+      payload: {
+        colorVal,
+        index,
+      },
+    });
   };
 
-  const handleSwatch = () => {
-    setSwatchOpen(!swatchOpen);
+  const handleSwatch = (e, index) => {
+    // if isSwatchOpen is false, open the swatch
+    if (!isSwatchOpen[index]) {
+      colorDispatch({ type: 'open swatch', payload: index });
+    } else {
+      colorDispatch({ type: 'close swatch', payload: index });
+    }
   };
 
   return (
     <>
       {selection.map((color, index) => (
         <>
-          <Swatch onClick={handleSwatch}>
+          <Swatch onClick={(e) => handleSwatch(e, index)}>
             <Inner color={color} />
           </Swatch>
-
-          { swatchOpen && (
+          { isSwatchOpen[index] && (
           <HexColorPicker
             color={color}
-            onChange={handleColorChange}
+            onChange={(colorVal) => handleColorChange(colorVal, index)}
           />
           )}
         </>
       ))}
+
     </>
   );
 }
