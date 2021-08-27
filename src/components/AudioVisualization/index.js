@@ -1,7 +1,7 @@
 /* eslint-disable for-direction */
 import React, { useContext, useState } from 'react';
 import Sketch from 'react-p5';
-import '../../utils/p5.sound.min';
+// import '../../utils/p5.sound.min';
 import { DjContext } from '../../store';
 
 import backImg from '../../back.jpeg';
