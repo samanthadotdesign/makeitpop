@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Track = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 100px)
+  grid-template-columns: repeat(auto-fill, 100px);
+  align-items: center;
 `;
 
 export const Container = styled.div`
@@ -10,11 +11,10 @@ export const Container = styled.div`
   margin: 60px auto;
   display: flex;
   flex-direction: column;
-`;
 
-export const StepButton = styled.button`
-  flex: 1;
-  color: '#25ccf7';
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
 `;
 
 export const Wrapper = styled.div`
