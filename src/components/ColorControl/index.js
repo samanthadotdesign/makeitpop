@@ -27,16 +27,25 @@ export default function ColorControl() {
     }
   };
 
+  /**
+   *
+   * @param {*} color object {r: 255, g: 255, b: 255, a: 1}
+   * @returns string rgba(255,255,255,1)
+   */
+  const createRgbStr = (color) => {
+    const rgbVals = Object.values(color);
+    const joinedRgbVals = rgbVals.join();
+    console.log(joinedRgbVals);
+    return joinedRgbVals;
+  };
+
   return (
     <>
       {selection.map((color, index) => (
         <>
           <Swatch onClick={(e) => handleSwatch(e, index)}>
             <Inner
-              r={color.r}
-              g={color.g}
-              b={color.b}
-              a={color.a}
+              color={createRgbStr(color)}
             />
           </Swatch>
           { isSwatchOpen[index] && (

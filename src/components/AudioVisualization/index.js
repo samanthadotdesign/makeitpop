@@ -1,7 +1,7 @@
 /* eslint-disable for-direction */
 import React, { useContext } from 'react';
 import Sketch from 'react-p5';
-import '../../utils/p5.sound.min';
+// import '../../utils/p5.sound.min';
 import { DjContext } from '../../store';
 
 import backImg from '../../back.jpeg';
@@ -69,7 +69,7 @@ const particleSetup = (p) => {
     p.imageMode(p.CENTER);
     // CREATE NEW FFT OBJECT
     fft = new p5.FFT();
-    img.filter(p.BLUR, 60);
+    // img.p.filter(p.BLUR, 60);
     // Create instance of the particle
     singleParticle = new Particle();
     console.log('******* INSIDE PARTICLE SETUP *********');
@@ -91,7 +91,7 @@ const particleSetup = (p) => {
     }
     p.pop();
 
-    p.image(img, 0, 0, p.windowWidth, p.windowHeight);
+    // p.image(img, 0, 0, p.windowWidth, p.windowHeight);
 
     fft.analyze();
     amp = fft.getEnergy(20, 200);
