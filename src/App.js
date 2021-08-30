@@ -5,7 +5,7 @@ import Display from './components/Display';
 import AudioControl from './components/AudioControl';
 import Record from './components/Record';
 import Nav from './components/Nav';
-import { Main } from './styles';
+import { Main, GlobalStyle } from './styles';
 
 // Add p5 script at the bottom of the document
 const p5Script = document.createElement('script');
@@ -18,6 +18,7 @@ document.body.appendChild(p5Script);
 function App() {
   return (
     <>
+      <GlobalStyle />
       <DjProvider>
         <Nav />
         <Main>

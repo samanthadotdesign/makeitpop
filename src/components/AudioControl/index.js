@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { DjContext, audioConfig } from '../../store';
 import { Container, Track } from './styles';
 import BpmControl from '../BpmControl';
@@ -7,7 +7,7 @@ import Play from '../Play';
 
 export default function AudioControl() {
   const { audioStoreState } = useContext(DjContext);
-  const { phrases, tempo } = audioStoreState;
+  const { phrases } = audioStoreState;
 
   return (
     <>
