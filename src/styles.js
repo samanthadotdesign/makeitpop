@@ -58,3 +58,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   ${fonts}
 `;
+
+export const ControlsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 780px;
+  margin: 0 auto;
+`;
