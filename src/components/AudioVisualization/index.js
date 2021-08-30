@@ -3,56 +3,13 @@ import React, { useContext } from 'react';
 import Sketch from 'react-p5';
 // import '../../utils/p5.sound.min';
 import { DjContext } from '../../store';
+import { FullContainer } from './styles';
 
 let fft;
 let singleParticle;
 let amp;
 let img;
 const particles = [];
-
-// class Particle {
-//   constructor() {
-//     // this.pos = new p5.Vector(150, 150);
-//     this.pos = p5.Vector.random2D().mult(250);
-//     // this.posX = 0;
-//     // this.posY = 150;
-//     this.vel = p5.createVector(0, 0);
-//     this.acc = this.pos.copy().mult(p5.random(0.001, 0.0001));
-//     this.w = p5.random(3, 5);
-//     // this.color = p.color(255, 204, 0);
-//     this.color = [p5.random(200, 255), p5.random(200, 255), p5.random(200, 255)];
-//   }
-
-//   update(cond) {
-//     this.vel.add(this.acc);
-//     this.pos.add(this.vel);
-//     if (cond) {
-//       this.pos.add(this.vel);
-//       this.pos.add(this.vel);
-//       this.pos.add(this.vel);
-//       this.pos.add(this.vel);
-//       this.pos.add(this.vel);
-//     }
-//   }
-
-//   show() {
-//     p5.noStroke();
-//     p5.fill(this.color);
-//     // p.ellipse(255, 350);
-//     p5.ellipse(this.pos.x, this.pos.y, this.w);
-//   }
-
-//   edges() {
-//     if (this.pos.x < -p5.windowWidth / 2
-//         || this.pos.x > p5.windowWidth / 2
-//         || this.pos.y < -p5.windowHeight / 2
-//         || this.pos.y > p5.windowHeight / 2) {
-//       return true;
-//     }
-
-//     return false;
-//   }
-// }
 
 // Showing the particle inside a new p5 instance
 // const particleInstance = new p5(particleSetup);
@@ -198,11 +155,11 @@ export default function AudioVisualization() {
   };
 
   return (
-    <>
+    <FullContainer>
       <Sketch
         setup={setup}
         draw={draw}
       />
-    </>
+    </FullContainer>
   );
 }

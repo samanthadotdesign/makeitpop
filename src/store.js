@@ -74,11 +74,10 @@ const audioReducer = (state, action) => {
 // Color Controls
 const initialColorState = {
   selection: [
-    '#cccccc', // [0] Background
-    '#000000', // [1] Circle
-    '#ff0000', // [2] Particle
-    '#ff0000', // [3] Text
-    '#000000',
+    '#000', // [0] Background
+    '#fff', // [1] Circle
+    '#FFFF52', // [2] Particle
+    '#FFFF52', // [3] Text
     // {
     //   r: 117, g: 214, b: 255, a: 1,
     // },

@@ -2,7 +2,6 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 import GrifinitoRegular from './fonts/Grifinito-Regular.woff2';
 import GrifinitoMedium from './fonts/Grifinito-Medium.woff2';
 import RoobertRegular from './fonts/Roobert-Regular.woff2';
-import pattern from './assets/pattern.jpeg';
 
 export const Main = styled.div`
   
@@ -51,11 +50,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-  body {
-    background-image: url(${pattern});
-    background-size: 2000px;
-    background-repeat: repeat;
-  }
   ${fonts}
 `;
 

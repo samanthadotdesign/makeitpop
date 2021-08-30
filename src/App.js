@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DjProvider } from './store';
 import GraphicControl from './components/GraphicControl';
 import AudioControl from './components/AudioControl';
@@ -16,17 +16,23 @@ p5Script.src = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sou
 document.body.appendChild(p5Script);
 
 function App() {
+  const [controlsOpen, setControlsOpen] = useState(false);
+
   return (
     <>
       <GlobalStyle />
       <DjProvider>
         <Nav />
+        <AudioVisualization />
+
+        {controlsOpen && (
         <Main>
           <GraphicControl />
           <AudioControl />
           <Record />
         </Main>
-        <AudioVisualization />
+        ) }
+
       </DjProvider>
     </>
   );
