@@ -1,10 +1,10 @@
 import React from 'react';
 import { DjProvider } from './store';
 import GraphicControl from './components/GraphicControl';
-import Display from './components/Display';
 import AudioControl from './components/AudioControl';
 import Record from './components/Record';
 import Nav from './components/Nav';
+import AudioVisualization from './components/AudioVisualization';
 import { Main, GlobalStyle } from './styles';
 
 // Add p5 script at the bottom of the document
@@ -23,10 +23,10 @@ function App() {
         <Nav />
         <Main>
           <GraphicControl />
-          <Display />
           <AudioControl />
           <Record />
         </Main>
+        <AudioVisualization />
       </DjProvider>
     </>
   );
