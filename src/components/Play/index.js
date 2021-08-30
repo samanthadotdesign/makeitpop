@@ -5,7 +5,9 @@ import React, {
 } from 'react';
 import Sketch from 'react-p5';
 import '../../utils/p5.sound.min';
-import { DjContext, audioConfig } from '../../store';
+import { DjContext } from '../../store';
+import { Button } from '../../styles';
+
 import bass from '../../audio/bass.wav';
 import snare from '../../audio/snare.wav';
 import closedHihat from '../../audio/closed-hihat.wav';
@@ -96,8 +98,7 @@ export default function Play() {
 
   return (
     <div>
-      <button type="button" onClick={handleButton}>{buttonText}</button>
-      <p>{tempo}</p>
+      <Button type="button" onClick={handleButton}>{buttonText}</Button>
       <Sketch preload={preload} setup={setup} />
     </div>
   );

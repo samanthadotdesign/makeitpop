@@ -59,3 +59,37 @@ export const ControlsContainer = styled.div`
   max-width: 780px;
   margin: 0 auto;
 `;
+
+export const Input = styled.input`
+  border: 2px solid #000;
+  max-width: 380px;
+  outline: none;
+  font-family: "Roobert Regular";
+  font-size: 16px;
+  color: #000;;
+  padding: 12px 16px;
+`;
+
+export const Button = styled.button`
+  font-family: "Roobert Regular";
+  font-size: 16px;
+  padding: 12px 16px;
+  width: 380px;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 40px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: #ffff52;
+    color: #000;
+  }
+`;
+
+export const InputLabel = styled.p`
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-color: #848484;
+`;

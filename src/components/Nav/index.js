@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, NavLink, NavIcon } from './styles';
 
-export default function Nav() {
+export default function Nav({ controlsOpen, setControlsOpen }) {
   const handleNavIconClick = () => {
-    console.log('drawer slides open');
+    setControlsOpen(!controlsOpen);
   };
 
   return (

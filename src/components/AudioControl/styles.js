@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const Track = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 100px);
+  grid-template-columns: repeat(auto-fill, 62px);
   align-items: center;
 `;
 
 export const Container = styled.div`
-  max-width: 800px;
-  margin: 60px auto;
+  width: 380px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
 

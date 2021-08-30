@@ -1,8 +1,9 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext } from 'react';
 import { DjContext } from '../../store';
+import { Input, InputLabel } from '../../styles';
 
 export default function TypeControl() {
-  const { textStoreState, textDispatch } = useContext(DjContext);
+  const { textDispatch } = useContext(DjContext);
 
   const handleTextChange = (e) => {
     const input = e.target.value;
@@ -11,7 +12,12 @@ export default function TypeControl() {
 
   return (
     <>
-      <input type="text" onChange={handleTextChange} />
+      <InputLabel>Text</InputLabel>
+      <Input
+        type="text"
+        onChange={handleTextChange}
+        placeholder="make it trippy"
+      />
     </>
   );
 }

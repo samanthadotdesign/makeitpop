@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { DjProvider } from './store';
 import GraphicControl from './components/GraphicControl';
-import AudioControl from './components/AudioControl';
-import Record from './components/Record';
 import Nav from './components/Nav';
 import AudioVisualization from './components/AudioVisualization';
-import { Main, GlobalStyle } from './styles';
+import ControlsContainer from './components/ControlsContainer';
+import { GlobalStyle } from './styles';
 
 // Add p5 script at the bottom of the document
 const p5Script = document.createElement('script');
@@ -22,15 +21,14 @@ function App() {
     <>
       <GlobalStyle />
       <DjProvider>
-        <Nav />
+        <Nav
+          controlsOpen={controlsOpen}
+          setControlsOpen={setControlsOpen}
+        />
         <AudioVisualization />
 
         {controlsOpen && (
-        <Main>
-          <GraphicControl />
-          <AudioControl />
-          <Record />
-        </Main>
+        <ControlsContainer />
         ) }
 
       </DjProvider>
