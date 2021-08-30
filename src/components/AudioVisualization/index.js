@@ -77,7 +77,7 @@ export default function AudioVisualization() {
       p.imageMode(p.CENTER);
       // CREATE NEW FFT OBJECT
       fft = new p5.FFT();
-      img.filter(p.BLUR, 60);
+      img.p5.filter(p.BLUR, 60);
       // Create instance of the particle
       singleParticle = new Particle();
     };
