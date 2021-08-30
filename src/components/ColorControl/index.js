@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { DjContext } from '../../store';
-import { Swatch, Inner } from './styles';
+import { Swatch, Inner, ColorContainer } from './styles';
 
 export default function ColorControl() {
   const { colorStoreState, colorDispatch } = useContext(DjContext);
@@ -40,12 +40,13 @@ export default function ColorControl() {
   };
 
   return (
-    <>
+    <ColorContainer>
       {selection.map((color, index) => (
         <>
           <Swatch onClick={(e) => handleSwatch(e, index)}>
             <Inner
-              color={createRgbStr(color)}
+              color={color}
+              // color={createRgbStr(color)}
             />
           </Swatch>
           { isSwatchOpen[index] && (
@@ -57,6 +58,6 @@ export default function ColorControl() {
         </>
       ))}
 
-    </>
+    </ColorContainer>
   );
 }

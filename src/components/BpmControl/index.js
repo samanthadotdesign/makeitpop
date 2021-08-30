@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Slider } from '@material-ui/core';
 import { DjContext } from '../../store';
+import { PrettoSlider, Container } from './styles';
 
 export default function BpmControl() {
   const { audioStoreState, audioDispatch } = useContext(DjContext);
@@ -14,9 +15,9 @@ export default function BpmControl() {
   };
 
   return (
-    <div>
+    <Container>
       <p>Tempo</p>
-      <Slider
+      <PrettoSlider
         value={tempo}
         onChange={handleChange}
         defaultValue={120}
@@ -25,6 +26,6 @@ export default function BpmControl() {
         max={240}
         valueLabelDisplay="auto"
       />
-    </div>
+    </Container>
   );
 }

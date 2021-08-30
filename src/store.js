@@ -74,21 +74,26 @@ const audioReducer = (state, action) => {
 // Color Controls
 const initialColorState = {
   selection: [
-    {
-      r: 117, g: 214, b: 255, a: 1,
-    },
-    {
-      r: 174, g: 187, b: 255, a: 1,
-    },
-    {
-      r: 255, g: 171, b: 111, a: 1,
-    },
-    {
-      r: 234, g: 158, b: 233, a: 1,
-    },
-    {
-      r: 98, g: 232, b: 205, a: 1,
-    },
+    '#cccccc', // [0] Background
+    '#000000', // [1] Circle
+    '#ff0000', // [2] Particle
+    '#ff0000', // [3] Text
+    '#000000',
+    // {
+    //   r: 117, g: 214, b: 255, a: 1,
+    // },
+    // {
+    //   r: 174, g: 187, b: 255, a: 1,
+    // },
+    // {
+    //   r: 255, g: 171, b: 111, a: 1,
+    // },
+    // {
+    //   r: 234, g: 158, b: 233, a: 1,
+    // },
+    // {
+    //   r: 98, g: 232, b: 205, a: 1,
+    // },
   ],
   isSwatchOpen: [
     false, false, false, false, false,
