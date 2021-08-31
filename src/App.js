@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DjProvider } from './store';
-import GraphicControl from './components/GraphicControl';
-import AudioControl from './components/AudioControl';
-import Record from './components/Record';
 import Nav from './components/Nav';
 import AudioVisualization from './components/AudioVisualization';
-import { Main, GlobalStyle } from './styles';
+import ControlsContainer from './components/ControlsContainer';
+import { GlobalStyle } from './styles';
 
 // Add p5 script at the bottom of the document
 const p5Script = document.createElement('script');
@@ -16,17 +14,24 @@ p5Script.src = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sou
 document.body.appendChild(p5Script);
 
 function App() {
+  const [controlsOpen, setControlsOpen] = useState(false);
+
   return (
     <>
       <GlobalStyle />
       <DjProvider>
-        <Nav />
-        <Main>
-          <GraphicControl />
-          <AudioControl />
-          <Record />
-        </Main>
+        <Nav
+          controlsOpen={controlsOpen}
+          setControlsOpen={setControlsOpen}
+        />
         <AudioVisualization />
+
+        {controlsOpen && (
+        <ControlsContainer
+          setControlsOpen={setControlsOpen}
+        />
+        ) }
+
       </DjProvider>
     </>
   );

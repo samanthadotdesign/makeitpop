@@ -2,7 +2,6 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 import GrifinitoRegular from './fonts/Grifinito-Regular.woff2';
 import GrifinitoMedium from './fonts/Grifinito-Medium.woff2';
 import RoobertRegular from './fonts/Roobert-Regular.woff2';
-import pattern from './assets/pattern.jpeg';
 
 export const Main = styled.div`
   
@@ -51,11 +50,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-  body {
-    background-image: url(${pattern});
-    background-size: 2000px;
-    background-repeat: repeat;
-  }
   ${fonts}
 `;
 
@@ -64,4 +58,46 @@ export const ControlsContainer = styled.div`
   flex-direction: column;
   max-width: 780px;
   margin: 0 auto;
+`;
+
+export const Input = styled.input`
+  border: 2px solid #000;
+  max-width: 380px;
+  outline: none;
+  font-family: "Roobert Regular";
+  font-size: 16px;
+  color: #000;;
+  padding: 12px 16px;
+
+  @media (max-width: 800px) {
+    max-width: 100%;
+  }
+`;
+
+export const Button = styled.button`
+  font-family: "Roobert Regular";
+  font-size: 16px;
+  padding: 12px 16px;
+  width: 380px;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 40px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: #ffff52;
+    color: #000;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+`;
+
+export const InputLabel = styled.p`
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-color: #848484;
 `;

@@ -2,12 +2,12 @@ import { withStyles } from '@material-ui/styles'; import styled from 'styled-com
 import { Slider } from '@material-ui/core';
 
 export const Container = styled.div`
-  max-width: 20vw;
+  max-width: 380px;
 `;
 
-export const PrettoSlider = withStyles({
+export const TempoSlider = withStyles({
   root: {
-    color: '#52af77',
+    color: '#000',
     height: 8,
   },
   thumb: {
@@ -23,6 +23,7 @@ export const PrettoSlider = withStyles({
   },
   active: {},
   valueLabel: {
+    color: '#000',
     left: 'calc(-50% + 4px)',
   },
   track: {

@@ -1,7 +1,9 @@
+import { Button } from '../../styles';
+
 export default function Record() {
   return (
     <>
-      <button type="button">Record</button>
+      <Button type="button">Record</Button>
     </>
   );
 }
