@@ -48,7 +48,6 @@ export default function AudioVisualization() {
       p.rotate(p.random(-0.5, 1));
     }
 
-
     p.text(input, p.windowHeight / 2, p.windowHeight / 2);
     p.color(textColor);
     p.pop();
@@ -126,8 +125,7 @@ export default function AudioVisualization() {
         this.color = p.random([
           textColor,
           particleColor,
-          strokeColor,
-
+          strokeColor]);
       }
 
       update(cond) {
