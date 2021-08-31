@@ -28,7 +28,9 @@ function App() {
         <AudioVisualization />
 
         {controlsOpen && (
-        <ControlsContainer />
+        <ControlsContainer
+          setControlsOpen={setControlsOpen}
+        />
         ) }
 
       </DjProvider>
