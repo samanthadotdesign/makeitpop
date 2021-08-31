@@ -107,7 +107,11 @@ export default function AudioVisualization() {
         this.w = p.random(3, 5);
         // this.color = p.color(255, 204, 0);
         // this.color = [p.random(200, 255), p.random(200, 255), p.random(200, 255)];
-        this.color = p.color(particleColor);
+        this.color = p.random([
+          textColor,
+          particleColor,
+          strokeColor,
+        ]);
       }
 
       update(cond) {

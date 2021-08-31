@@ -4,6 +4,10 @@ export const Track = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 62px);
   align-items: center;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill, 55px);
+  }
 `;
 
 export const Container = styled.div`

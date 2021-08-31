@@ -5,6 +5,10 @@ export const Container = styled.div`
   flex-direction: column;
   max-width: 780px;
   margin: 0 auto;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const Panel = styled.div`
@@ -18,12 +22,16 @@ export const Panel = styled.div`
   overflow: scroll;
   box-sizing: border-box;
   padding: 40px 120px 60px 40px;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: 800px) { 
-    padding: 40px 80px 20px 20px;
+    padding: 20px;
     width: 100vw;
     bottom: 0;
     right: unset;
+    overflow-x: none;
+    justify-content: center;
   }
 `;
 
@@ -36,14 +44,16 @@ export const Close = styled.button`
   padding: 0;
   position: relative;
 
+
   &::before,
   &::after {
     background-color: #000;
     content: '';
     height: 24px;
     width: 2px;
+    position: absolute;
     top: 0;
-    left: 9px;
+    left: 0px;
   }
 
   &::before {
@@ -70,6 +80,11 @@ export const CloseWrapper = styled.div`
   z-index: 4;
   padding: 24px;
   margin-bottom: 24px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
 
   @media (max-width:800px) {
     top: unset;

@@ -9,6 +9,11 @@ export const Container = styled.div`
   width: 100%;
   align-items: center;
   padding: 30px;
+
+  @media (max-width: 800px) {
+    padding: 16px;
+    justify-content: center;
+  }
 `;
 
 export const NavLink = styled.a`
@@ -17,6 +22,10 @@ export const NavLink = styled.a`
   font-size: 100px;
   color: #FFFF52;
   margin-left: 20px;
+
+  @media (max-width: 800px) {
+    font-size: 60px;
+  }
 `;
 
 export const NavIcon = styled(NavSVG)`
@@ -30,5 +39,9 @@ export const NavIcon = styled(NavSVG)`
     path {
       fill: #ffff52;
     }
+  }
+
+  @media (max-width: 800px) {
+    width: 48px;
   }
 `;

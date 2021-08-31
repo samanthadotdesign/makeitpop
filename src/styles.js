@@ -68,6 +68,10 @@ export const Input = styled.input`
   font-size: 16px;
   color: #000;;
   padding: 12px 16px;
+
+  @media (max-width: 800px) {
+    max-width: 100%;
+  }
 `;
 
 export const Button = styled.button`
@@ -85,6 +89,10 @@ export const Button = styled.button`
   &:hover {
     background-color: #ffff52;
     color: #000;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
   }
 `;
 

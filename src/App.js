@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { DjProvider } from './store';
-import GraphicControl from './components/GraphicControl';
 import Nav from './components/Nav';
 import AudioVisualization from './components/AudioVisualization';
 import ControlsContainer from './components/ControlsContainer';

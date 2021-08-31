@@ -12,6 +12,10 @@ export const Swatch = styled.div`
   &:hover {
     background-color: #f2f2f2;
   }
+
+  @media (max-width: 800px) {
+    margin-left: 12px;
+  }
 `;
 
 export const Inner = styled.div`
