@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable for-direction */
 import React, { useContext } from 'react';
 import Sketch from 'react-p5';
@@ -24,8 +27,8 @@ export default function AudioVisualization() {
   const textColor = selection[3];
 
   const setup = (p) => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
-
+    const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+    canvas.class('text');
     // CHANGE THE ANGLE MODE TO DEGREES
     p.angleMode(p.DEGREES);
     p.imageMode(p.CENTER);
@@ -33,16 +36,19 @@ export default function AudioVisualization() {
     fft = new p5.FFT();
     // img.p.filter(p.BLUR, 60);
   };
-
+  const angle = 0;
   const draw = (p) => {
     p.clear();
 
     p.background(backgroundColor);
 
     p.push();
+
     if (amp > 190) {
       p.rotate(p.random(-0.5, 1));
     }
+
+
     p.text(input, p.windowHeight / 2, p.windowHeight / 2);
     p.color(textColor);
     p.pop();
@@ -64,6 +70,7 @@ export default function AudioVisualization() {
     if (amp > 210) {
       p.rotate(p.random(-0.5, 0.5));
     }
+
     p.pop();
 
     // p.image(img, 0, 0, p.windowWidth, p.windowHeight);
@@ -115,11 +122,12 @@ export default function AudioVisualization() {
         this.w = p.random(3, 5);
         // this.color = p.color(255, 204, 0);
         // this.color = [p.random(200, 255), p.random(200, 255), p.random(200, 255)];
+
         this.color = p.random([
           textColor,
           particleColor,
           strokeColor,
-        ]);
+
       }
 
       update(cond) {
