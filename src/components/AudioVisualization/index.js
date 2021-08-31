@@ -40,10 +40,18 @@ export default function AudioVisualization() {
     p.background(backgroundColor);
 
     p.push();
-    p.text(input, 100, p.windowHeight / 2);
-    p.rotate(p.radians(p.frameCount));
+    if (amp > 190) {
+      p.rotate(p.random(-0.5, 1));
+    }
+    p.text(input, p.windowHeight / 2, p.windowHeight / 2);
     p.color(textColor);
     p.pop();
+
+    // p.push();
+    // p.text(input, 100, p.windowHeight / 2);
+    // p.rotate(p.radians(p.frameCount));
+    // p.color(textColor);
+    // p.pop();
 
     p.stroke(strokeColor);
     p.strokeWeight(3);
