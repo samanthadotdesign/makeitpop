@@ -118,11 +118,25 @@ const colorReducer = (state, action) => {
   }
 };
 
+const downloadReducer = (state, action) => {
+  switch (action.type) {
+    case 'set URL':
+      state.url = action.payload;
+      return { ...state };
+    default:
+      return state;
+  }
+};
+const initialDownloadState = {
+  url: '',
+};
+
 // Final Provider
 export const DjProvider = ({ children }) => {
   const [textStoreState, textDispatch] = useReducer(textReducer, initialTextState);
   const [audioStoreState, audioDispatch] = useReducer(audioReducer, initialStepState);
   const [colorStoreState, colorDispatch] = useReducer(colorReducer, initialColorState);
+  const [downloadStoreState, downloadDispatch] = useReducer(downloadReducer, initialDownloadState);
 
   return (
     <Provider value={{
@@ -132,6 +146,8 @@ export const DjProvider = ({ children }) => {
       audioDispatch,
       colorStoreState,
       colorDispatch,
+      downloadStoreState,
+      downloadDispatch,
     }}
     >
       {children}

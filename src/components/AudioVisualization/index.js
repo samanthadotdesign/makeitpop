@@ -28,7 +28,10 @@ export default function AudioVisualization() {
 
   const setup = (p) => {
     const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-    canvas.class('text');
+
+    // Canvas for recording the audiovisualization
+    canvas.class('recording');
+
     // CHANGE THE ANGLE MODE TO DEGREES
     p.angleMode(p.DEGREES);
     p.imageMode(p.CENTER);

@@ -3,6 +3,8 @@ import { DjProvider } from './store';
 import Nav from './components/Nav';
 import AudioVisualization from './components/AudioVisualization';
 import ControlsContainer from './components/ControlsContainer';
+import Record from './components/Record';
+
 import { GlobalStyle } from './styles';
 
 // Add p5 script at the bottom of the document
@@ -31,6 +33,8 @@ function App() {
           setControlsOpen={setControlsOpen}
         />
         ) }
+
+        <Record />
 
       </DjProvider>
     </>
